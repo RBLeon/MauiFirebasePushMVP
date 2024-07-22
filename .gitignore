@@ -1,0 +1,11 @@
+
+*.bin
+.vs/PushApiMVP/config/applicationhost.config
+*.vsidx
+.vs/PushApiMVP/copilot-chat/21fb2ea1/sessions/5679e9ef-2b6c-44e6-a47d-34de8addcb2d
+.vs/PushApiMVP/DesignTimeBuild/.dtbcache.v2
+.vs/PushApiMVP/v17/.futdcache.v2
+.vs/PushApiMVP/v17/.suo
+.vs/PushApiMVP/v17/DocumentLayout.json
+mauipush-6b44d-1f3889da1a83.json
+*.user

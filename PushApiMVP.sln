@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PushApiMVP", "PushApiMVP\PushApiMVP.csproj", "{E9F01A70-CD57-480D-ACFD-36E56E213004}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PushSenderMVP", "PushSenderMVP\PushSenderMVP.csproj", "{6EB9B523-2848-4C0B-BC14-2E0CC9D2429F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E9F01A70-CD57-480D-ACFD-36E56E213004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9F01A70-CD57-480D-ACFD-36E56E213004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9F01A70-CD57-480D-ACFD-36E56E213004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9F01A70-CD57-480D-ACFD-36E56E213004}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EB9B523-2848-4C0B-BC14-2E0CC9D2429F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EB9B523-2848-4C0B-BC14-2E0CC9D2429F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EB9B523-2848-4C0B-BC14-2E0CC9D2429F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EB9B523-2848-4C0B-BC14-2E0CC9D2429F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E5503534-A0A0-489E-9ADF-320F4A94378C}
+	EndGlobalSection
+EndGlobal

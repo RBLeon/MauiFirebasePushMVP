@@ -1,0 +1,57 @@
+﻿@page "/"
+@using System.Text.Json
+@using System.Text
+@using Microsoft.AspNetCore.Components.Forms
+
+@inject HttpClient HttpClient
+
+<EditForm Model="@_notification" OnValidSubmit="SendNotification">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="title" class="form-label">Notification Title</label>
+        <InputText id="title" class="form-control" @bind-Value="_notification.NotificationTitle" />
+    </div>
+
+    <div class="mb-3">
+        <label for="message" class="form-label">Notification Message</label>
+        <InputText id="message" class="form-control" @bind-Value="_notification.NotificationMessage" />
+    </div>
+
+    <div class="mb-3">
+        <label for="token" class="form-label">Push Token</label>
+        <InputText id="token" class="form-control" @bind-Value="_notification.PushToken" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Send Notification</button>
+</EditForm>
+
+@code {
+    private PushSendRequest _notification = new PushSendRequest();
+
+    private async Task SendNotification()
+    {
+        try
+        {
+            var json = JsonSerializer.Serialize(_notification);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            var response = await HttpClient.PostAsync("https://localhost:7042/push/send", content);
+
+            Console.WriteLine(response.IsSuccessStatusCode ? "Notification sent successfully." : "Failed to send notification.");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"An error occurred: {ex.Message}");
+        }
+    }
+
+    public class PushSendRequest
+    {
+        public string? NotificationTitle { get; set; }
+        public string? NotificationMessage { get; set; }
+        public string? PushToken { get; set; }
+        public Dictionary<string, string> Data { get; set; } = new();
+    }
+}

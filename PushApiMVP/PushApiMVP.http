@@ -1,0 +1,22 @@
+@PushApiMVP_HostAddress = http://localhost:5166
+### Send Push Notification
+POST {{PushApiMVP_HostAddress}}/api/push/send
+Content-Type: application/json
+
+{
+  "title": "Sample Notification",
+  "message": "This is a test push notification",
+  "target": "user123"
+}
+
+### Register Device for Push Notifications
+POST {{PushApiMVP_HostAddress}}/api/push/register
+Content-Type: application/json
+
+{
+  "deviceId": "device123",
+  "userId": "user123"
+}
+
+### Unregister Device from Push Notifications
+DELETE {{PushApiMVP_HostAddress}}/api/push/unregister/device123
