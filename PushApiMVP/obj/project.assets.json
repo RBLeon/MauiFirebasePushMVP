@@ -1634,11 +1634,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\FreelanceRepos\\PushApiMVP\\PushApiMVP\\PushApiMVP.csproj",
+      "projectUniqueName": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushApiMVP\\PushApiMVP.csproj",
       "projectName": "PushApiMVP",
-      "projectPath": "C:\\FreelanceRepos\\PushApiMVP\\PushApiMVP\\PushApiMVP.csproj",
+      "projectPath": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushApiMVP\\PushApiMVP.csproj",
       "packagesPath": "C:\\Users\\reynethan\\.nuget\\packages\\",
-      "outputPath": "C:\\FreelanceRepos\\PushApiMVP\\PushApiMVP\\obj\\",
+      "outputPath": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushApiMVP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

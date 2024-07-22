@@ -1965,11 +1965,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\FreelanceRepos\\PushApiMVP\\PushSenderMVP\\PushSenderMVP.csproj",
+      "projectUniqueName": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushSenderMVP\\PushSenderMVP.csproj",
       "projectName": "PushSenderMVP",
-      "projectPath": "C:\\FreelanceRepos\\PushApiMVP\\PushSenderMVP\\PushSenderMVP.csproj",
+      "projectPath": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushSenderMVP\\PushSenderMVP.csproj",
       "packagesPath": "C:\\Users\\reynethan\\.nuget\\packages\\",
-      "outputPath": "C:\\FreelanceRepos\\PushApiMVP\\PushSenderMVP\\obj\\",
+      "outputPath": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushSenderMVP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
