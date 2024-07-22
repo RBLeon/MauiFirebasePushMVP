@@ -10,3 +10,7 @@ bin/
 obj/
 PushApiMVP/bin
 PushApiMVP/obj
+/PushApiMVP/obj
+/PushApiMVP/bin
+/PushApiMVP/obj/Debug
+/PushApiMVP/obj/Debug/net8.0
