@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PushApiMVP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+93882b03580d8504563553c932f60264bcf13d9e")]
 [assembly: System.Reflection.AssemblyProductAttribute("PushApiMVP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PushApiMVP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

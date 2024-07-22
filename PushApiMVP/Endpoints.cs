@@ -42,11 +42,3 @@ public static class Endpoints
         );
     }
 }
-
-public record PushSendRequest(
-    string NotificationTitle,
-    string NotificationMessage,
-    bool IsSilent,
-    string PushToken,
-    Dictionary<string, string> Data
-);
