@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Shiny;
 
 namespace PushReceiverMVP
 {
@@ -9,14 +10,15 @@ namespace PushReceiverMVP
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseShiny()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
-
+            
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

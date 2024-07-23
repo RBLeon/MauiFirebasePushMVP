@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PushSenderMVP")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f4ab046748df44548a84ba0c8338fc8b50403941")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5ee4462f4122142cf58a085ba2b8fd9757c4e0e9")]
 [assembly: System.Reflection.AssemblyProductAttribute("PushSenderMVP")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PushSenderMVP")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
