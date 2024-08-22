@@ -1,13 +1,12 @@
 ﻿using System.Text.Json;
-using FirebaseAdmin.Messaging;
 using FirebaseAdmin;
+using FirebaseAdmin.Messaging;
 using Google.Apis.Auth.OAuth2;
 
 namespace PushApiMVP;
 
 public class FirebasePushSender : IPushSender
 {
-    private readonly FirebaseApp app;
     private readonly FirebaseMessaging messaging;
 
     public FirebasePushSender(IConfiguration configuration)
@@ -30,68 +29,70 @@ public class FirebasePushSender : IPushSender
                 universe_domain = "googleapis.com"
             });
             var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(json));
-            var cred = GoogleCredential.FromServiceAccountCredential(ServiceAccountCredential.FromServiceAccountData(stream));
+            var credential = GoogleCredential.FromServiceAccountCredential(ServiceAccountCredential.FromServiceAccountData(stream));
 
-            this.app = FirebaseApp.Create(new AppOptions
+            FirebaseApp app = FirebaseApp.Create(new AppOptions
             {
-                Credential = cred
+                Credential = credential
             });
-            this.messaging = FirebaseMessaging.GetMessaging(this.app);
+            this.messaging = FirebaseMessaging.GetMessaging(app);
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex);
+            Console.WriteLine($"Error initializing FirebasePushSender: {ex}");
+            throw;
         }
     }
 
-    public async Task Send(string token, string title, string message, bool silent, Dictionary<string, string> data)
+    public async Task Send(string token, string title, string body, bool silent, Dictionary<string, string> data)
     {
         try
         {
-            //var fcmMessage = new Message
-            //{
-            //    Data = data,
-            //    Token = token,
-            //    Apns = new ApnsConfig
-            //    {
-            //        Aps = new Aps
-            //        {
-            //            ContentAvailable = true
-            //        }
-            //    }
-            //};
-            //if (!silent)
-            //{
-            //    fcmMessage.Notification = new Notification
-            //    {
-            //        Title = title,
-            //        Body = message
-            //    };
-            //    fcmMessage.Android = new AndroidConfig
-            //    {
-            //        Notification = new AndroidNotification
-            //        {
-            //            Title = title,
-            //            Body = message,
-            //            ChannelId = "YOUR_DEFAULT_CHANNEL_ID" // Replace with your actual default channel ID
-            //        }
-            //    };
-            //}
-            var fcmMessage = new Message
+            var message = new Message
             {
+                Token = token,
+                Data = data,
                 Notification = new Notification
                 {
                     Title = title,
-                    Body = message
+                    Body = body
                 },
-                Topic = "topic",
+                Android = new AndroidConfig
+                {
+                    Priority = Priority.High,
+                    Notification = new AndroidNotification
+                    {
+                        ChannelId = "default_channel_id" // Make sure this matches the channel ID in your Android app
+                    }
+                },
+                Apns = new ApnsConfig
+                {
+                    Aps = new Aps
+                    {
+                        Alert = new ApsAlert
+                        {
+                            Title = title,
+                            Body = body
+                        },
+                        Badge = 1,
+                        Sound = "default"
+                    }
+                }
             };
-            var response = await this.messaging.SendAsync(fcmMessage);
-            Console.WriteLine("Successfully sent message: " + response);
+
+            if (silent)
+            {
+                message.Android.Notification = null;
+                message.Apns.Aps.ContentAvailable = true;
+                message.Apns.Aps.Alert = null;
+            }
+
+            string response = await messaging.SendAsync(message);
+            Console.WriteLine($"Successfully sent message: {response}");
         }
         catch (Exception ex)
         {
-            Console.WriteLine(ex);
+            Console.WriteLine($"Error sending Firebase message: {ex}");
             throw;
         }
     }
