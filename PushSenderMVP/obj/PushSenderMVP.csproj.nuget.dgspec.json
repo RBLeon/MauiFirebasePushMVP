@@ -10,7 +10,7 @@
         "projectUniqueName": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushSenderMVP\\PushSenderMVP.csproj",
         "projectName": "PushSenderMVP",
         "projectPath": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushSenderMVP\\PushSenderMVP.csproj",
-        "packagesPath": "C:\\Users\\reynethan\\.nuget\\packages\\",
+        "packagesPath": "C:\\NuGet",
         "outputPath": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushSenderMVP\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [

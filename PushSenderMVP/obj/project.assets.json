@@ -1959,7 +1959,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\reynethan\\.nuget\\packages\\": {},
+    "C:\\NuGet": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -1968,7 +1968,7 @@
       "projectUniqueName": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushSenderMVP\\PushSenderMVP.csproj",
       "projectName": "PushSenderMVP",
       "projectPath": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushSenderMVP\\PushSenderMVP.csproj",
-      "packagesPath": "C:\\Users\\reynethan\\.nuget\\packages\\",
+      "packagesPath": "C:\\NuGet",
       "outputPath": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushSenderMVP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [

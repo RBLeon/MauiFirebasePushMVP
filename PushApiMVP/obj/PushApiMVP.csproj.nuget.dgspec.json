@@ -10,7 +10,7 @@
         "projectUniqueName": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushApiMVP\\PushApiMVP.csproj",
         "projectName": "PushApiMVP",
         "projectPath": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushApiMVP\\PushApiMVP.csproj",
-        "packagesPath": "C:\\Users\\reynethan\\.nuget\\packages\\",
+        "packagesPath": "C:\\NuGet",
         "outputPath": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushApiMVP\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
