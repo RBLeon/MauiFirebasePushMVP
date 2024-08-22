@@ -2,48 +2,77 @@
 @using System.Text.Json
 @using System.Text
 @using Microsoft.AspNetCore.Components.Forms
-
 @inject HttpClient HttpClient
+
+<h1>Push Notification Tester</h1>
 
 <EditForm Model="@_notification" OnValidSubmit="SendNotification">
     <DataAnnotationsValidator />
     <ValidationSummary />
-
     <div class="mb-3">
         <label for="title" class="form-label">Notification Title</label>
         <InputText id="title" class="form-control" @bind-Value="_notification.NotificationTitle" />
     </div>
-
     <div class="mb-3">
         <label for="message" class="form-label">Notification Message</label>
         <InputText id="message" class="form-control" @bind-Value="_notification.NotificationMessage" />
     </div>
-
     <div class="mb-3">
         <label for="token" class="form-label">Push Token</label>
         <InputText id="token" class="form-control" @bind-Value="_notification.PushToken" />
     </div>
-
     <button type="submit" class="btn btn-primary">Send Notification</button>
 </EditForm>
 
+<button class="btn btn-secondary mt-3" @onclick="SendTestNotification">Send Test Notification</button>
+
+@if (!string.IsNullOrEmpty(_responseMessage))
+{
+    <div class="mt-3 @(_isSuccess ? "text-success" : "text-danger")">
+        @_responseMessage
+    </div>
+}
+
 @code {
     private PushSendRequest _notification = new PushSendRequest();
+    private string _responseMessage = string.Empty;
+    private bool _isSuccess = false;
+
+    private async Task SendTestNotification()
+    {
+        await SendNotificationToEndpoint("https://localhost:7042/push/test");
+    }
 
     private async Task SendNotification()
+    {
+        await SendNotificationToEndpoint("https://localhost:7042/push/send");
+    }
+
+    private async Task SendNotificationToEndpoint(string endpoint)
     {
         try
         {
             var json = JsonSerializer.Serialize(_notification);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var response = await HttpClient.PostAsync(endpoint, content);
 
-            var response = await HttpClient.PostAsync("https://localhost:7042/push/send", content);
+            var responseContent = await response.Content.ReadAsStringAsync();
 
-            Console.WriteLine(response.IsSuccessStatusCode ? "Notification sent successfully." : "Failed to send notification.");
+            if (response.IsSuccessStatusCode)
+            {
+                _responseMessage = $"Notification sent successfully. Response: {responseContent}";
+                _isSuccess = true;
+            }
+            else
+            {
+                _responseMessage = $"Failed to send notification. Status code: {response.StatusCode}. Response: {responseContent}";
+                _isSuccess = false;
+            }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"An error occurred: {ex.Message}");
+            _responseMessage = $"An error occurred: {ex.Message}";
+            _isSuccess = false;
         }
     }
 

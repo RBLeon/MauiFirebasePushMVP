@@ -1,14 +1,5 @@
-﻿using System;
-using Foundation;
-using Java.Interop;
-using Microsoft.Maui;
-using Microsoft.Maui.Hosting;
-
-#if ANDROID
-using Android.Runtime;
-#elif IOS
+﻿using Foundation;
 using UIKit;
-#endif
 
 namespace PushReceiverMVP
 {
@@ -28,6 +19,5 @@ namespace PushReceiverMVP
         [Export("application:didReceiveRemoteNotification:fetchCompletionHandler:")]
         public void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
             => global::Shiny.Hosting.Host.Lifecycle.OnDidReceiveRemoteNotification(userInfo, completionHandler);
-
     }
 }

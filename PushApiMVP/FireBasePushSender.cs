@@ -22,11 +22,10 @@ public class FirebasePushSender : IPushSender
                 private_key = googleConfig.PrivateKey,
                 client_email = googleConfig.ClientEmail,
                 client_id = googleConfig.ClientId,
-                client_x509_cert_url = googleConfig.ClientX509CertUrl,
                 auth_uri = "https://accounts.google.com/o/oauth2/auth",
                 token_uri = "https://oauth2.googleapis.com/token",
                 auth_provider_x509_cert_url = "https://www.googleapis.com/oauth2/v1/certs",
-                universe_domain = "googleapis.com"
+                client_x509_cert_url = googleConfig.ClientX509CertUrl
             });
             var stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(json));
             var credential = GoogleCredential.FromServiceAccountCredential(ServiceAccountCredential.FromServiceAccountData(stream));
@@ -44,7 +43,7 @@ public class FirebasePushSender : IPushSender
         }
     }
 
-    public async Task Send(string token, string title, string body, bool silent, Dictionary<string, string> data)
+    public async Task<string> Send(string token, string title, string body, bool silent, Dictionary<string, string> data)
     {
         try
         {
@@ -52,30 +51,14 @@ public class FirebasePushSender : IPushSender
             {
                 Token = token,
                 Data = data,
-                Notification = new Notification
-                {
-                    Title = title,
-                    Body = body
-                },
                 Android = new AndroidConfig
                 {
                     Priority = Priority.High,
                     Notification = new AndroidNotification
                     {
-                        ChannelId = "default_channel_id" // Make sure this matches the channel ID in your Android app
-                    }
-                },
-                Apns = new ApnsConfig
-                {
-                    Aps = new Aps
-                    {
-                        Alert = new ApsAlert
-                        {
-                            Title = title,
-                            Body = body
-                        },
-                        Badge = 1,
-                        Sound = "default"
+                        Title = title,
+                        Body = body,
+                        ChannelId = "default_channel_id"
                     }
                 }
             };
@@ -83,12 +66,11 @@ public class FirebasePushSender : IPushSender
             if (silent)
             {
                 message.Android.Notification = null;
-                message.Apns.Aps.ContentAvailable = true;
-                message.Apns.Aps.Alert = null;
             }
 
             string response = await messaging.SendAsync(message);
             Console.WriteLine($"Successfully sent message: {response}");
+            return response;
         }
         catch (Exception ex)
         {
