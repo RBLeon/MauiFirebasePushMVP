@@ -1,5 +1,14 @@
-﻿using Foundation;
+﻿using System;
+using Foundation;
+using Java.Interop;
+using Microsoft.Maui;
+using Microsoft.Maui.Hosting;
+
+#if ANDROID
+using Android.Runtime;
+#elif IOS
 using UIKit;
+#endif
 
 namespace PushReceiverMVP
 {

@@ -4,7 +4,7 @@
     {
         public App()
         {
-            InitializeComponent();
+            //InitializeComponent();
 
             MainPage = new AppShell();
         }
