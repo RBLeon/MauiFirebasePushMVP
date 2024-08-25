@@ -23,6 +23,7 @@ builder.Services.AddCors(options =>
 
 // Register FirebasePushSender
 builder.Services.AddSingleton<IPushSender, FirebasePushSender>();
+builder.Services.AddSingleton<IDeviceTokenService, DeviceTokenService>();
 
 //// Configure the Push service
 //var appleCfg = builder.Configuration.GetSection("Push:Apple");

@@ -25,6 +25,7 @@
 </EditForm>
 
 <button class="btn btn-secondary mt-3" @onclick="SendTestNotification">Send Test Notification</button>
+<button class="btn btn-secondary mt-3" @onclick="SendTestToAll">Send Test To All Topic</button>
 
 @if (!string.IsNullOrEmpty(_responseMessage))
 {
@@ -38,14 +39,19 @@
     private string _responseMessage = string.Empty;
     private bool _isSuccess = false;
 
+    private async Task SendNotification()
+    {
+        await SendNotificationToEndpoint("https://localhost:7042/push/send");
+    }
+
     private async Task SendTestNotification()
     {
         await SendNotificationToEndpoint("https://localhost:7042/push/test");
     }
 
-    private async Task SendNotification()
+    private async Task SendTestToAll()
     {
-        await SendNotificationToEndpoint("https://localhost:7042/push/send");
+        await SendNotificationToEndpoint("https://localhost:7042/push/sendTestToAll");
     }
 
     private async Task SendNotificationToEndpoint(string endpoint)

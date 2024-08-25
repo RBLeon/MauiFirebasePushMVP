@@ -13,7 +13,6 @@ namespace PushReceiverMVP
     {
         private readonly ILogger<PushDelegate> _logger;
         private readonly HttpClient _httpClient;
-        private const string API_BASE_URL = "https://localhost:7042";
 
         public PushDelegate(ILogger<PushDelegate> logger, HttpClient httpClient)
         {
@@ -21,14 +20,16 @@ namespace PushReceiverMVP
             _httpClient = httpClient;
         }
 
-        public async Task OnEntry(PushNotification notification)
+        public Task OnEntry(PushNotification notification)
         {
             _logger.LogInformation("Notification tapped");
+            return Task.CompletedTask;
         }
 
-        public async Task OnReceived(PushNotification notification)
+        public Task OnReceived(PushNotification notification)
         {
             _logger.LogInformation("Notification received");
+            return Task.CompletedTask;
         }
 
         public async Task OnNewToken(string token)
@@ -48,7 +49,7 @@ namespace PushReceiverMVP
             try
             {
                 var content = new StringContent(JsonSerializer.Serialize(new { Token = token }), Encoding.UTF8, "application/json");
-                var response = await _httpClient.PostAsync($"{API_BASE_URL}/push/register", content);
+                var response = await _httpClient.PostAsync("push/register", content);
                 response.EnsureSuccessStatusCode();
                 _logger.LogInformation("Token registered successfully with server and subscribed to 'All' topic");
             }
@@ -63,7 +64,7 @@ namespace PushReceiverMVP
             try
             {
                 var content = new StringContent(JsonSerializer.Serialize(new { Token = token }), Encoding.UTF8, "application/json");
-                var response = await _httpClient.PostAsync($"{API_BASE_URL}/push/unregister", content);
+                var response = await _httpClient.PostAsync("push/unregister", content);
                 response.EnsureSuccessStatusCode();
                 _logger.LogInformation("Token unregistered successfully from server");
             }

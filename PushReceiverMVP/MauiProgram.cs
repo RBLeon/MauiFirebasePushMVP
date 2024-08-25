@@ -20,6 +20,25 @@ namespace PushReceiverMVP
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
+#if DEBUG
+            var apiUrl = "https://10.0.2.2:7042"; // Use this for Android emulator
+            // var apiUrl = "https://localhost:7042"; // Use this for iOS simulator or physical device
+#else
+        var apiUrl = "https://your-production-api-url.com";
+#endif
+
+            var devSslHelper = new DevHttpsConnectionHelper();
+
+#if DEBUG
+            HttpClient client = new HttpClient(devSslHelper.GetPlatformMessageHandler())
+            {
+                BaseAddress = new Uri(apiUrl)
+            };
+#else
+        HttpClient client = new HttpClient { BaseAddress = new Uri(apiUrl) };
+#endif
+
+            builder.Services.AddSingleton(client);
 
 #if DEBUG
             builder.Logging.AddDebug();

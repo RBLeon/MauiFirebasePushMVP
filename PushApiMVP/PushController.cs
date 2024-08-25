@@ -83,6 +83,26 @@ namespace PushApiMVP
             }
         }
 
+        [HttpPost("sendTestToAll")]
+        public async Task<IActionResult> SendTestNotificationToAll()
+        {
+            try
+            {
+                string messageId = await _pushSender.SendToTopic(
+                    "All",
+                    "Test Notification",
+                    "This is a test notification from your server!",
+                    false,
+                    new Dictionary<string, string> { { "key1", "value1" }, { "key2", "value2" } }
+                );
+                return Ok(new { message = "Test notification sent successfully!", messageId = messageId });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = $"Failed to send test notification: {ex.Message}" });
+            }
+        }
+
         [HttpPost("sendToTopic")]
         public async Task<IActionResult> SendNotificationToTopic([FromBody] PushSendRequest request)
         {
