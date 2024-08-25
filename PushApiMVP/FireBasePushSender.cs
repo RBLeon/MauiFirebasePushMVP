@@ -78,4 +78,128 @@ public class FirebasePushSender : IPushSender
             throw;
         }
     }
+
+    public async Task<string> SendToTopic(string topic, string title, string body, bool silent, Dictionary<string, string> data)
+    {
+        try
+        {
+            var message = new Message
+            {
+                Topic = topic,
+                Data = data,
+                Android = new AndroidConfig
+                {
+                    Priority = Priority.High,
+                    Notification = new AndroidNotification
+                    {
+                        Title = title,
+                        Body = body,
+                        ChannelId = "default_channel_id"
+                    }
+                }
+            };
+
+            if (silent)
+            {
+                message.Android.Notification = null;
+            }
+
+            string response = await messaging.SendAsync(message);
+            Console.WriteLine($"Successfully sent message: {response}");
+            return response;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error sending Firebase message: {ex}");
+            throw;
+        }
+    }
+
+    public async Task<string> SendToCondition(string condition, string title, string body, bool silent, Dictionary<string, string> data)
+    {
+        try
+        {
+            var message = new Message
+            {
+                Condition = condition,
+                Data = data,
+                Android = new AndroidConfig
+                {
+                    Priority = Priority.High,
+                    Notification = new AndroidNotification
+                    {
+                        Title = title,
+                        Body = body,
+                        ChannelId = "default_channel_id"
+                    }
+                }
+            };
+
+            if (silent)
+            {
+                message.Android.Notification = null;
+            }
+
+            string response = await messaging.SendAsync(message);
+            Console.WriteLine($"Successfully sent message: {response}");
+            return response;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error sending Firebase message: {ex}");
+            throw;
+        }
+    }
+
+    public async Task<string> SendToMultipleDevices(List<string> tokens, string title, string body, bool silent, Dictionary<string, string> data)
+    {
+        try
+        {
+            var message = new MulticastMessage
+            {
+                Tokens = tokens,
+                Data = data,
+                Android = new AndroidConfig
+                {
+                    Priority = Priority.High,
+                    Notification = new AndroidNotification
+                    {
+                        Title = title,
+                        Body = body,
+                        ChannelId = "default_channel_id"
+                    }
+                }
+            };
+
+            if (silent)
+            {
+                message.Android.Notification = null;
+            }
+
+            BatchResponse response = await messaging.SendEachForMulticastAsync(message);
+            Console.WriteLine($"Successfully sent message to {response.SuccessCount} devices");
+            return response.SuccessCount.ToString();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error sending Firebase message: {ex}");
+            throw;
+        }
+    }
+
+    // subscribe to a topic
+    public async Task<string> SubscribeToTopic(string token, string topic)
+    {
+        try
+        {
+            await messaging.SubscribeToTopicAsync(new List<string> { token }, topic);
+            Console.WriteLine($"Successfully subscribed to topic {topic}");
+            return topic;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error subscribing to topic: {ex}");
+            throw;
+        }
+    }
 }
