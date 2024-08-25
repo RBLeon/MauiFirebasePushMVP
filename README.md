@@ -1,5 +1,5 @@
 # .NET MAUI Firebase cloud messaging Push Notifications MVP
- A MVP project for sending push notifications to iOS and Android using FCM Api V1, from your own backend.
+ A MVP project for sending push notifications to iOS and Android using FCM Api V1, from your own backend. It needs a lot of improvement and removing redundant stuff, but it's a great starting point for getting your application to work with push and data notifications.
 
  To make this work you capture the token from the console. After that you use swagger to enter the token using RegisterToken endpoint. After which you do this for all devices you want to send the notification to. Then simply use the test to all button in the frontend sender application and voila.
 
