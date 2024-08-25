@@ -5,4 +5,6 @@
 
 Side note: strange thing was that for the physical device I first had to send a notification directly to that device before sending to the topic started working
 
+Also don't forget to set your own api address and your credentials for fcm. Haven't tested it for APN/iOS yet.
+
  If you have problems with the FirebaseMessaging nuget package giving you "can't find part of path" errors try to remove the path limit like instructed here: https://learn.microsoft.com/en-us/windows/win32/fileio/maximum-file-path-limitation?tabs=powershell
