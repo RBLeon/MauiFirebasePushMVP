@@ -7,6 +7,8 @@
 		<UserSecretsId>36bd1d85-a917-4245-910e-f25077090db2</UserSecretsId>
 	</PropertyGroup>
 
+	<PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+	<PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
 	<ItemGroup>
 		<PackageReference Include="Shiny.Extensions.Push" Version="2.0.0-preview-0029" />
 		<PackageReference Include="Shiny.Extensions.Push.Endpoints" Version="2.0.0-preview-0029" />

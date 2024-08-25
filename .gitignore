@@ -17,3 +17,4 @@ PushApiMVP/obj
 /PushApiMVP/obj
 tree.txt
 /PushApiMVP/obj/Debug
+*.cache

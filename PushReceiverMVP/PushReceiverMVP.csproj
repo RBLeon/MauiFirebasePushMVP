@@ -49,6 +49,7 @@
 		<PackageReference Include="Shiny.Hosting.Maui" Version="3.3.3" />
 		<PackageReference Include="Shiny.Push" Version="3.3.3" />
 		<PackageReference Include="Shiny.Push.FirebaseMessaging" Version="3.3.3" />
+
 	</ItemGroup>
 
 	<ItemGroup Condition="$(TargetFramework.Contains('-ios'))">
@@ -67,6 +68,15 @@
 	  <PackageReference Include="Xamarin.GooglePlayServices.Basement">
 	    <Version>118.4.0.1</Version>
 	  </PackageReference>
+	  <PackageReference Include="Xamarin.AndroidX.Collection" Version="1.4.2" />
+	  <PackageReference Include="Xamarin.AndroidX.Collection.Ktx" Version="1.4.2" />
+	    <PackageReference Include="Xamarin.AndroidX.Lifecycle.ViewModel" Version="2.8.4" />
+		<PackageReference Include="Xamarin.AndroidX.Lifecycle.ViewModel.Ktx" Version="2.8.4" />
+		<PackageReference Include="Xamarin.AndroidX.Activity" Version="1.9.1" />
+		<PackageReference Include="Xamarin.AndroidX.Activity.Ktx" Version="1.9.1" />
+		  <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData" Version="2.8.4" />
+		  <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData.Core" Version="2.8.4" />
+		  <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData.Core.Ktx" Version="2.8.4" />
 	</ItemGroup>
 	
 </Project>

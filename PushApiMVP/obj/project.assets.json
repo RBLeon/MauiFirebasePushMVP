@@ -1628,34 +1628,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\NuGet": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/Users/reynethan/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushApiMVP\\PushApiMVP.csproj",
+      "projectUniqueName": "/Users/reynethan/Local_Documents/Github/MauiFirebasePushMVP/PushApiMVP/PushApiMVP.csproj",
       "projectName": "PushApiMVP",
-      "projectPath": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushApiMVP\\PushApiMVP.csproj",
-      "packagesPath": "C:\\NuGet",
-      "outputPath": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushApiMVP\\obj\\",
+      "projectPath": "/Users/reynethan/Local_Documents/Github/MauiFirebasePushMVP/PushApiMVP/PushApiMVP.csproj",
+      "packagesPath": "/Users/reynethan/.nuget/packages/",
+      "outputPath": "/Users/reynethan/Local_Documents/Github/MauiFirebasePushMVP/PushApiMVP/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\reynethan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/reynethan/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://pkgs.dev.azure.com/codewriters/_packaging/Codewriters/nuget/v3/index.json": {}
+        "/usr/local/share/dotnet/library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
@@ -1667,11 +1659,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -1710,7 +1697,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

@@ -13,27 +13,27 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = PushSenderMVP
 build_property.RootNamespace = PushSenderMVP
-build_property.ProjectDir = C:\FreelanceRepos\MauiFirebasePushMVP\PushSenderMVP\
+build_property.ProjectDir = /Users/reynethan/Local_Documents/Github/MauiFirebasePushMVP/PushSenderMVP/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\FreelanceRepos\MauiFirebasePushMVP\PushSenderMVP
+build_property.MSBuildProjectDirectory = /Users/reynethan/Local_Documents/Github/MauiFirebasePushMVP/PushSenderMVP
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/FreelanceRepos/MauiFirebasePushMVP/PushSenderMVP/App.razor]
+[/Users/reynethan/Local_Documents/Github/MauiFirebasePushMVP/PushSenderMVP/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FreelanceRepos/MauiFirebasePushMVP/PushSenderMVP/MainLayout.razor]
+[/Users/reynethan/Local_Documents/Github/MauiFirebasePushMVP/PushSenderMVP/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FreelanceRepos/MauiFirebasePushMVP/PushSenderMVP/Pages/Index.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+[/Users/reynethan/Local_Documents/Github/MauiFirebasePushMVP/PushSenderMVP/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/FreelanceRepos/MauiFirebasePushMVP/PushSenderMVP/_Imports.razor]
+[/Users/reynethan/Local_Documents/Github/MauiFirebasePushMVP/PushSenderMVP/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

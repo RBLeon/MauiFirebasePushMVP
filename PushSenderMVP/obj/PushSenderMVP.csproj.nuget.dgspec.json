@@ -1,34 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushSenderMVP\\PushSenderMVP.csproj": {}
+    "/Users/reynethan/Local_Documents/Github/MauiFirebasePushMVP/PushSenderMVP/PushSenderMVP.csproj": {}
   },
   "projects": {
-    "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushSenderMVP\\PushSenderMVP.csproj": {
+    "/Users/reynethan/Local_Documents/Github/MauiFirebasePushMVP/PushSenderMVP/PushSenderMVP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushSenderMVP\\PushSenderMVP.csproj",
+        "projectUniqueName": "/Users/reynethan/Local_Documents/Github/MauiFirebasePushMVP/PushSenderMVP/PushSenderMVP.csproj",
         "projectName": "PushSenderMVP",
-        "projectPath": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushSenderMVP\\PushSenderMVP.csproj",
-        "packagesPath": "C:\\NuGet",
-        "outputPath": "C:\\FreelanceRepos\\MauiFirebasePushMVP\\PushSenderMVP\\obj\\",
+        "projectPath": "/Users/reynethan/Local_Documents/Github/MauiFirebasePushMVP/PushSenderMVP/PushSenderMVP.csproj",
+        "packagesPath": "/Users/reynethan/.nuget/packages/",
+        "outputPath": "/Users/reynethan/Local_Documents/Github/MauiFirebasePushMVP/PushSenderMVP/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\reynethan\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/reynethan/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://pkgs.dev.azure.com/codewriters/_packaging/Codewriters/nuget/v3/index.json": {}
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -40,11 +33,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -63,19 +51,19 @@
             "Microsoft.NET.ILLink.Analyzers": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.100-1.23401.1, )",
+              "version": "[7.0.100-1.23211.1, )",
               "autoReferenced": true
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.100-1.23401.1, )",
+              "version": "[7.0.100-1.23211.1, )",
               "autoReferenced": true
             },
             "Microsoft.NET.Sdk.WebAssembly.Pack": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.6, )",
+              "version": "[8.0.2, )",
               "autoReferenced": true
             }
           },
@@ -93,7 +81,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[7.0.19, 7.0.19]"
+              "version": "[7.0.20, 7.0.20]"
             }
           ],
           "frameworkReferences": {
@@ -101,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
