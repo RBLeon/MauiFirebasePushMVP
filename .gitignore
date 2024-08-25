@@ -18,3 +18,4 @@ PushApiMVP/obj
 tree.txt
 /PushApiMVP/obj/Debug
 *.cache
+/PushApiMVP/obj
