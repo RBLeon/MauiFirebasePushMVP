@@ -1,9 +1,15 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Maui.LifecycleEvents;
+using Plugin.Firebase.Analytics;
 using Shiny;
 using Shiny.Push;
 #if ANDROID
 using Android.App;
+using Plugin.Firebase.Core.Platforms.Android; 
 #endif
+#if IOS 
+using Plugin.Firebase.Core.Platforms.iOS;
+#endif 
 
 namespace PushReceiverMVP
 {
@@ -15,6 +21,7 @@ namespace PushReceiverMVP
             builder
                 .UseMauiApp<App>()
                 .UseShiny()
+                .RegisterFirebaseServices() 
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -26,10 +33,10 @@ namespace PushReceiverMVP
 #else
         var apiUrl = "https://your-production-api-url.com";
 #endif
-
+#if ANDROID
             var devSslHelper = new DevHttpsConnectionHelper();
-
-#if DEBUG
+#endif
+#if DEBUG && ANDROID
             HttpClient client = new HttpClient(devSslHelper.GetPlatformMessageHandler())
             {
                 BaseAddress = new Uri(apiUrl)
@@ -62,10 +69,27 @@ namespace PushReceiverMVP
 
             return builder.Build();
         }
-
+        private static MauiAppBuilder RegisterFirebaseServices(this MauiAppBuilder builder)
+        {
+            builder.ConfigureLifecycleEvents(events => {
+#if IOS
+                events.AddiOS(iOS => iOS.WillFinishLaunching((_,__) => {
+                    CrossFirebase.Initialize();
+                    return false;
+                }));
+#elif ANDROID
+            events.AddAndroid(android => android.OnCreate((activity, _) =>
+                CrossFirebase.Initialize(activity)));
+            FirebaseAnalyticsImplementation.Initialize();
+#endif
+            });
+        
+            builder.Services.AddSingleton(_ => CrossFirebaseAnalytics.Current);
+            return builder;
+        }
 #if ANDROID
         static NotificationChannel DefaultChannel => new(
-            "default_channel",
+            "default_channel_id",
             "Default Channel",
             NotificationImportance.Default
         )

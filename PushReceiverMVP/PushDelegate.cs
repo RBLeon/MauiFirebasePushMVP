@@ -39,7 +39,7 @@ namespace PushReceiverMVP
         }
 
         public async Task OnUnRegistered(string token)
-        {
+        { 
             _logger.LogInformation("Push token unregistered: {Token}", token);
             await UnregisterTokenWithServer(token);
         }

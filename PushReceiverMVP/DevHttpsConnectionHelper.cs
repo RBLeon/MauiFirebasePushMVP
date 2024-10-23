@@ -1,4 +1,6 @@
 ﻿using System.Net.Security;
+
+#if ANDROID
 using Android.Net;
 using Xamarin.Android.Net;
 
@@ -35,3 +37,4 @@ namespace PushReceiverMVP
         }
     }
 }
+#endif

@@ -1,6 +1,9 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
+using Android.Views;
+using Firebase;
+using Firebase.Analytics;
 
 namespace PushReceiverMVP
 {
@@ -18,5 +21,18 @@ namespace PushReceiverMVP
     )]
     public class MainActivity : MauiAppCompatActivity
     {
+        protected override void OnCreate(Bundle? savedInstanceState) 
+        { 
+            base.OnCreate(savedInstanceState); 
+ 
+            Window?.AddFlags(WindowManagerFlags.TranslucentStatus); 
+            Window?.SetStatusBarColor(Android.Graphics.Color.Transparent); 
+             
+            // Initialize Firebase 
+            FirebaseApp.InitializeApp(this); 
+             
+            // Get Firebase Analytics instance 
+            FirebaseAnalytics.GetInstance(this); 
+        } 
     }
 }
