@@ -1,4 +1,10 @@
-﻿namespace PushReceiverMVP
+﻿using System;
+using Microsoft.Maui.Controls;
+using Shiny;
+using Shiny.Hosting;
+using Shiny.Push;
+
+namespace PushReceiverMVP
 {
     public partial class MainPage : ContentPage
     {
@@ -6,18 +12,31 @@
 
         public MainPage()
         {
+            InitializeComponent();
+
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private async void OnCounterClicked(object sender, EventArgs e)
         {
-            //count++;
+            var push = Host.Current.Services.GetService<IPushManager>();
+            if (push != null)
+            {
+                var result = await push.RequestAccess();
+                if (result.Status == AccessState.Available)
+                {
+                    CounterBtn.Text = $"Token: {result.RegistrationToken}";
+                }
+                else
+                {
+                    CounterBtn.Text = "Push notifications not available";
+                }
+            }
+            else
+            {
+                CounterBtn.Text = "Push service not found";
+            }
 
-            //if (count == 1)
-            //    CounterBtn.Text = $"Clicked {count} time";
-            //else
-            //    CounterBtn.Text = $"Clicked {count} times";
-
-            //SemanticScreenReader.Announce("CounterBtn.Text");
+            SemanticScreenReader.Announce(CounterBtn.Text);
         }
     }
 

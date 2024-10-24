@@ -4,19 +4,29 @@ using Android.OS;
 using Android.Views;
 using Firebase;
 using Firebase.Analytics;
+using Microsoft.Maui;
+using Shiny;
 
 namespace PushReceiverMVP
 {
-    [Activity(Theme = "@style/Maui.SplashTheme", 
+    [Activity(
+        LaunchMode = LaunchMode.SingleTop,
+        Theme = "@style/Maui.SplashTheme", 
         MainLauncher = true, 
-        LaunchMode = LaunchMode.SingleTop, 
-        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density)]
+        ConfigurationChanges = 
+            ConfigChanges.ScreenSize | 
+            ConfigChanges.Orientation | 
+            ConfigChanges.UiMode | 
+            ConfigChanges.ScreenLayout | 
+            ConfigChanges.SmallestScreenSize | 
+            ConfigChanges.Density
+    )]
     [IntentFilter(
-        new[] {
-            Shiny.ShinyPushIntents.NotificationClickAction
-        },
-        Categories = new[] {
-            "android.intent.category.DEFAULT"
+        new[] { 
+            ShinyPushIntents.NotificationClickAction 
+        },    
+        Categories = new[] { 
+            global::Android.Content.Intent.CategoryDefault
         }
     )]
     public class MainActivity : MauiAppCompatActivity
@@ -26,13 +36,7 @@ namespace PushReceiverMVP
             base.OnCreate(savedInstanceState); 
  
             Window?.AddFlags(WindowManagerFlags.TranslucentStatus); 
-            Window?.SetStatusBarColor(Android.Graphics.Color.Transparent); 
-             
-            // Initialize Firebase 
-            FirebaseApp.InitializeApp(this); 
-             
-            // Get Firebase Analytics instance 
-            FirebaseAnalytics.GetInstance(this); 
+            Window?.SetStatusBarColor(Android.Graphics.Color.Transparent);
         } 
     }
 }

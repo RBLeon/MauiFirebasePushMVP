@@ -31,7 +31,7 @@ namespace PushReceiverMVP
             var apiUrl = "https://10.0.2.2:7042"; // Use this for Android emulator
             // var apiUrl = "https://localhost:7042"; // Use this for iOS simulator or physical device
 #else
-        var apiUrl = "https://your-production-api-url.com";
+        var apiUrl = "https://10.0.2.2:7042"; // change this to your production URL
 #endif
 #if ANDROID
             var devSslHelper = new DevHttpsConnectionHelper();
@@ -47,9 +47,7 @@ namespace PushReceiverMVP
 
             builder.Services.AddSingleton(client);
 
-#if DEBUG
             builder.Logging.AddDebug();
-#endif
             builder.Services.AddPushFirebaseMessaging<PushDelegate>(
                 new FirebaseConfiguration(
                     false,
@@ -73,20 +71,25 @@ namespace PushReceiverMVP
         {
             builder.ConfigureLifecycleEvents(events => {
 #if IOS
-                events.AddiOS(iOS => iOS.WillFinishLaunching((_,__) => {
-                    CrossFirebase.Initialize();
-                    return false;
-                }));
+            events.AddiOS(iOS => iOS.WillFinishLaunching((app, launchOptions) => {
+                CrossFirebase.Initialize();
+                return true;
+            }));
 #elif ANDROID
-            events.AddAndroid(android => android.OnCreate((activity, _) =>
-                CrossFirebase.Initialize(activity)));
-            FirebaseAnalyticsImplementation.Initialize();
+                events.AddAndroid(android => android.OnCreate((activity, _) =>
+                {
+                    CrossFirebase.Initialize(activity);
+                    FirebaseAnalyticsImplementation.Initialize(activity);
+                }));
 #endif
             });
-        
+            
             builder.Services.AddSingleton(_ => CrossFirebaseAnalytics.Current);
+
+
             return builder;
         }
+        
 #if ANDROID
         static NotificationChannel DefaultChannel => new(
             "default_channel_id",

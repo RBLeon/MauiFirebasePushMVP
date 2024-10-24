@@ -58,7 +58,8 @@ public class FirebasePushSender : IPushSender
                     {
                         Title = title,
                         Body = body,
-                        ChannelId = "default_channel_id"
+                        ChannelId = "default_channel_id",
+                        ClickAction = "SHINY_PUSH_NOTIFICATION_CLICK"
                     }
                 }
             };
@@ -94,7 +95,8 @@ public class FirebasePushSender : IPushSender
                     {
                         Title = title,
                         Body = body,
-                        ChannelId = "default_channel_id"
+                        ChannelId = "default_channel_id",
+                        ClickAction = "SHINY_PUSH_NOTIFICATION_CLICK"
                     }
                 }
             };
@@ -130,7 +132,8 @@ public class FirebasePushSender : IPushSender
                     {
                         Title = title,
                         Body = body,
-                        ChannelId = "default_channel_id"
+                        ChannelId = "default_channel_id",
+                        ClickAction = "SHINY_PUSH_NOTIFICATION_CLICK"
                     }
                 }
             };
@@ -166,7 +169,8 @@ public class FirebasePushSender : IPushSender
                     {
                         Title = title,
                         Body = body,
-                        ChannelId = "default_channel_id"
+                        ChannelId = "default_channel_id",
+                        ClickAction = "SHINY_PUSH_NOTIFICATION_CLICK"
                     }
                 }
             };

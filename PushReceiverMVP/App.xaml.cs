@@ -1,4 +1,7 @@
-﻿using Shiny.Hosting;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.Maui.Controls;
+using Shiny.Hosting;
 using Shiny.Push;
 using Shiny;
 
@@ -8,7 +11,7 @@ namespace PushReceiverMVP
     {
         public App()
         {
-            //InitializeComponent();
+            InitializeComponent();
 
             MainPage = new AppShell();
         }
@@ -22,13 +25,17 @@ namespace PushReceiverMVP
         private async Task CheckPushPermission()
         {
             var push = Host.Current.Services.GetService<IPushManager>();
+            var pushDelegate = Host.Current.Services.GetService<IPushDelegate>();
             var result = await push.RequestAccess();
             if (result.Status == AccessState.Available)
             {
                 // good to go
                 var token = result.RegistrationToken;
-                // you should send this to your server with a userId attached if you want to do custom work
+                
                 Console.WriteLine($"Push token: {token}");
+                
+                // subscribe to All topic by default (read that this registration might be lost sporadically) https://stackoverflow.com/questions/67283587/firebase-cloud-messaging-reports-wrong using the pushdelegate
+                await pushDelegate.OnNewToken(token);
             }
         }
     }

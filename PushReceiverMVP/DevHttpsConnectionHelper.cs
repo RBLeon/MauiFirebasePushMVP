@@ -1,4 +1,6 @@
-﻿using System.Net.Security;
+﻿using System;
+using System.Net.Http;
+using System.Net.Security;
 
 #if ANDROID
 using Android.Net;
