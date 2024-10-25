@@ -22,7 +22,7 @@ namespace PushApiMVP
             try
             {
                 // This is a test token. You'll need to replace it with a real device token when testing with a real device.
-                string testToken = "f0uSZ_BuQo2KeK_w-hMwZF:APA91bFo-2WLt5oHz1HApQi2uy1wiHK-yVT1yGlkbr18q_o423olYDu0ALTCGHjT0n6yUYOX6q6PEuTMFAah0fhHft6XebWU6sW9bBVGhXqxPGsgG3xC-cLPfmUoNgg7qohaOXdQ72lR";
+                string testToken = "YOUR_ACTUAL_DEVICE_TOKEN_HERE";
                 string messageId = await _pushSender.Send(
                     testToken,
                     "Test Notification",

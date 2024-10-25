@@ -33,19 +33,20 @@ namespace PushReceiverMVP
         {
             _logger.LogInformation("Notification tapped");
             
-            // Track notification open
-            var parameters = new Dictionary<string, object>
-            {
-                { "notification_title", notification.Notification?.Title ?? "unknown" },
-                { "notification_message", notification.Notification?.Message ?? "unknown" },
-                { "notification_action", "open" }
-            };
+            // Track notification open (redundant if fcm is configured to track opened notifications)
+            // var parameters = new Dictionary<string, object>
+            // {
+            //     { "notification_title", notification.Notification?.Title ?? "unknown" },
+            //     { "notification_message", notification.Notification?.Message ?? "unknown" },
+            //     { "notification_action", "open" }
+            // };
+            //
             
-            _firebaseAnalytics.LogEvent("notification_opened", parameters);
+            // _firebaseAnalytics.LogEvent("notification_opened", parameters);
             
-            // Track impression when notification is shown
-            parameters["notification_action"] = "impression";
-            _firebaseAnalytics.LogEvent("notification_impression", parameters);
+            // Track impression when notification is shown 
+            // parameters["notification_action"] = "impression";
+            // _firebaseAnalytics.LogEvent("notification_impression", parameters);
 
             return Task.CompletedTask;
         }
@@ -54,16 +55,16 @@ namespace PushReceiverMVP
         {
             _logger.LogInformation("Notification received");
             
-            // Track notification received
-            var parameters = new Dictionary<string, object>
-            {
-                { "notification_title", notification.Notification?.Title ?? "unknown" },
-                { "notification_message", notification.Notification?.Message ?? "unknown" },
-                { "notification_action", "received" },
-                { "receive_state", "foreground" }
-            };
-            
-            _firebaseAnalytics.LogEvent("notification_received", parameters);
+            // Track notification received (redundant if fcm is configured to track received notifications)
+            // var parameters = new Dictionary<string, object>
+            // {
+            //     { "notification_title", notification.Notification?.Title ?? "unknown" },
+            //     { "notification_message", notification.Notification?.Message ?? "unknown" },
+            //     { "notification_action", "received" },
+            //     { "receive_state", "foreground" }
+            // };
+            //
+            // _firebaseAnalytics.LogEvent("notification_received", parameters);
 
             return Task.CompletedTask;
         }

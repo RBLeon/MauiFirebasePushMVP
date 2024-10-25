@@ -2,9 +2,6 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
-using Firebase;
-using Firebase.Analytics;
-using Microsoft.Maui;
 using Shiny;
 
 namespace PushReceiverMVP
