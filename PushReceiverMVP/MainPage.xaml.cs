@@ -1,4 +1,6 @@
 ﻿using System;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui.Accessibility;
 using Microsoft.Maui.Controls;
 using Shiny;
 using Shiny.Hosting;
@@ -24,7 +26,8 @@ namespace PushReceiverMVP
                 var result = await push.RequestAccess();
                 if (result.Status == AccessState.Available)
                 {
-                    CounterBtn.Text = $"Token: {result.RegistrationToken}";
+                    // Look for this in your output
+                    Console.WriteLine($"FCM Token: {result.RegistrationToken}");
                 }
                 else
                 {

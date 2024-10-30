@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Plugin.Firebase.Analytics;
 using Shiny.Push;
@@ -27,45 +23,18 @@ namespace PushReceiverMVP
             _logger = logger;
             _httpClient = httpClient;
             _firebaseAnalytics = firebaseAnalytics;
+            _firebaseAnalytics.IsAnalyticsCollectionEnabled = true;
         }
 
         public Task OnEntry(PushNotification notification)
         {
             _logger.LogInformation("Notification tapped");
-            
-            // Track notification open (redundant if fcm is configured to track opened notifications)
-            // var parameters = new Dictionary<string, object>
-            // {
-            //     { "notification_title", notification.Notification?.Title ?? "unknown" },
-            //     { "notification_message", notification.Notification?.Message ?? "unknown" },
-            //     { "notification_action", "open" }
-            // };
-            //
-            
-            // _firebaseAnalytics.LogEvent("notification_opened", parameters);
-            
-            // Track impression when notification is shown 
-            // parameters["notification_action"] = "impression";
-            // _firebaseAnalytics.LogEvent("notification_impression", parameters);
-
             return Task.CompletedTask;
         }
 
         public Task OnReceived(PushNotification notification)
         {
             _logger.LogInformation("Notification received");
-            
-            // Track notification received (redundant if fcm is configured to track received notifications)
-            // var parameters = new Dictionary<string, object>
-            // {
-            //     { "notification_title", notification.Notification?.Title ?? "unknown" },
-            //     { "notification_message", notification.Notification?.Message ?? "unknown" },
-            //     { "notification_action", "received" },
-            //     { "receive_state", "foreground" }
-            // };
-            //
-            // _firebaseAnalytics.LogEvent("notification_received", parameters);
-
             return Task.CompletedTask;
         }
 
@@ -76,8 +45,7 @@ namespace PushReceiverMVP
             // Track token refresh
             _firebaseAnalytics.LogEvent("fcm_token_refresh", new Dictionary<string, object>
             {
-                { "token_status", "new" },
-                {"token", token}
+                { "token_status", "new" }
             });
             
             await RegisterTokenWithServer(token);

@@ -31,7 +31,12 @@ namespace PushReceiverMVP
             var apiUrl = "https://10.0.2.2:7042"; // Use this for Android emulator
             // var apiUrl = "https://localhost:7042"; // Use this for iOS simulator or physical device
 #else
-        var apiUrl = "https://10.0.2.2:7042"; // change this to your production URL
+        var apiUrl = "https://10.0.2.2:7042"; 
+        // change this to your production URL
+        // currently does not matter where you set it, due to certificate issues you need to manually retrieve the token
+        // after that you need to register it in the swagger window that opens, and then you can hit the test all button (as it auto subscribes to the topic)
+        // Or you can choose to hardcode the token in the api where there is now "YOUR_TOKEN" in the code
+        
 #endif
 #if ANDROID
             var devSslHelper = new DevHttpsConnectionHelper();
@@ -48,6 +53,7 @@ namespace PushReceiverMVP
             builder.Services.AddSingleton(client);
 
             builder.Logging.AddDebug();
+            
             builder.Services.AddPushFirebaseMessaging<PushDelegate>(
                 new FirebaseConfiguration(
                     false,
@@ -70,23 +76,43 @@ namespace PushReceiverMVP
         private static MauiAppBuilder RegisterFirebaseServices(this MauiAppBuilder builder)
         {
             builder.ConfigureLifecycleEvents(events => {
-#if IOS
-            events.AddiOS(iOS => iOS.WillFinishLaunching((app, launchOptions) => {
-                CrossFirebase.Initialize();
-                return true;
-            }));
-#elif ANDROID
+        #if IOS
+                events.AddiOS(iOS => iOS.WillFinishLaunching((app, launchOptions) => {
+                    CrossFirebase.Initialize();
+                    return true;
+                }));
+        #elif ANDROID
                 events.AddAndroid(android => android.OnCreate((activity, _) =>
                 {
-                    CrossFirebase.Initialize(activity);
-                    FirebaseAnalyticsImplementation.Initialize(activity);
+                    try
+                    {
+                        CrossFirebase.Initialize(activity);
+                        FirebaseAnalyticsImplementation.Initialize(activity);
+                        CrossFirebaseAnalytics.Current.IsAnalyticsCollectionEnabled = true;
+                        
+                        // Ensure Google Play Services are available
+                        var availability = Android.Gms.Common.GoogleApiAvailability.Instance;
+                        var result = availability.IsGooglePlayServicesAvailable(activity);
+                        if (result != Android.Gms.Common.ConnectionResult.Success)
+                        {
+                            if (availability.IsUserResolvableError(result))
+                            {
+                                availability.ShowErrorNotification(activity, result);
+                            }
+                            throw new Exception($"Google Play Services not available: {result}");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Diagnostics.Debug.WriteLine($"Firebase Init Error: {ex}");
+                        throw; // Or handle appropriately
+                    }
                 }));
 #endif
             });
-            
+    
             builder.Services.AddSingleton(_ => CrossFirebaseAnalytics.Current);
-
-
+    
             return builder;
         }
         

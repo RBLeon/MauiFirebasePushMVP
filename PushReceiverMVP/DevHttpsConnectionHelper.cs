@@ -1,8 +1,4 @@
-﻿using System;
-using System.Net.Http;
-using System.Net.Security;
-
-#if ANDROID
+﻿#if ANDROID
 using Android.Net;
 using Xamarin.Android.Net;
 

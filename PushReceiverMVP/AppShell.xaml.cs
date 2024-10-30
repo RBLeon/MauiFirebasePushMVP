@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-
-namespace PushReceiverMVP
+﻿namespace PushReceiverMVP
 {
     public partial class AppShell : Shell
     {

@@ -1,4 +1,7 @@
-﻿using Foundation;
+﻿using System;
+using Foundation;
+using Microsoft.Maui;
+using Microsoft.Maui.Hosting;
 using UIKit;
 
 namespace PushReceiverMVP

@@ -1,4 +1,6 @@
-﻿namespace PushReceiverMVP.Platforms.iOS
+﻿using System.Net.Http;
+
+namespace PushReceiverMVP.Platforms.iOS
 {
     public class HttpHelper
     {

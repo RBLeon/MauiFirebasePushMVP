@@ -2,12 +2,13 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
+using Plugin.Firebase.Analytics;
+using Plugin.Firebase.Core.Platforms.Android;
 using Shiny;
 
 namespace PushReceiverMVP
 {
     [Activity(
-        LaunchMode = LaunchMode.SingleTop,
         Theme = "@style/Maui.SplashTheme", 
         MainLauncher = true, 
         ConfigurationChanges = 
@@ -34,6 +35,6 @@ namespace PushReceiverMVP
  
             Window?.AddFlags(WindowManagerFlags.TranslucentStatus); 
             Window?.SetStatusBarColor(Android.Graphics.Color.Transparent);
-        } 
+        }
     }
 }
