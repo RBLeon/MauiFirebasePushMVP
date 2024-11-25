@@ -1,5 +1,7 @@
 # .NET MAUI Blazor/Hybrid Firebase Cloud Messaging (FCM) MVP
 
+## temp update: Have just finished implementing the iOS part for the non-MVP project, will update this repo in about two weeks to have both android and iOS working.
+
 A minimal viable project demonstrating push notifications for iOS and Android using FCM API V1, featuring both custom backend integration and analytics tracking.
 
 ## 🌟 Key Features
